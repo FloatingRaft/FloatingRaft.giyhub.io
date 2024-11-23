@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>FloatingRaft | FloatingRaft</title><meta name="author" content="FloatingRaft"><meta name="copyright" content="FloatingRaft"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Week 1CyberChef’s Secret一道签到题，根据题目提示应该可以用CyberChef一把梭 打开txt文档，根据题目提示把这串密码复制粘贴至CyberChef  先按base32解码，再按base58解码，最后再base64解码，直接得到flag   知识点总结：这道题考察了CyberChef的使用以及对几种Base类型编码的判断，然后就可以一把梭   机密图片图片隐写题，先查看图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FloatingRaft">
+<meta property="og:url" content="http://example.com/2024/11/23/2023NewStarCTFWeek1&2-FloatingRaft%E5%A4%8D%E7%8E%B0/index.html">
+<meta property="og:site_name" content="FloatingRaft">
+<meta property="og:description" content="Week 1CyberChef’s Secret一道签到题，根据题目提示应该可以用CyberChef一把梭 打开txt文档，根据题目提示把这串密码复制粘贴至CyberChef  先按base32解码，再按base58解码，最后再base64解码，直接得到flag   知识点总结：这道题考察了CyberChef的使用以及对几种Base类型编码的判断，然后就可以一把梭   机密图片图片隐写题，先查看图">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2024-11-23T15:34:20.442Z">
+<meta property="article:modified_time" content="2024-11-17T17:08:42.012Z">
+<meta property="article:author" content="FloatingRaft">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/11/23/2023NewStarCTFWeek1&amp;2-FloatingRaft%E5%A4%8D%E7%8E%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FloatingRaft',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-18 01:08:42',
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="FloatingRaft" type="application/atom+xml">
+</head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">FloatingRaft</span></a><a class="nav-page-title" href="/"><span class="site-name">FloatingRaft</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-23T15:34:20.442Z" title="发表于 2024-11-23 23:34:20">2024-11-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-17T17:08:42.012Z" title="更新于 2024-11-18 01:08:42">2024-11-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h2><h3 id="CyberChef’s-Secret"><a href="#CyberChef’s-Secret" class="headerlink" title="CyberChef’s Secret"></a>CyberChef’s Secret</h3><p>一道签到题，根据题目提示应该可以用CyberChef一把梭</p>
+<p>打开txt文档，根据题目提示把这串密码复制粘贴至CyberChef</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731726184641-e8e65431-4596-4767-b262-094321305b9e.png"></p>
+<p>先按base32解码，再按base58解码，最后再base64解码，直接得到flag</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731726412987-1a66f1cb-7b03-4f80-8b2f-135942c42b0b.png"></p>
+<blockquote>
+<p><strong><font style="color:#000000;">知识点总结：这道题考察了CyberChef的使用以及对几种Base类型编码的判断，然后就可以一把梭</font></strong></p>
+</blockquote>
+<p><strong><font style="color:#000000;"></font></strong></p>
+<h3 id="机密图片"><a href="#机密图片" class="headerlink" title="机密图片"></a><font style="color:#000000;">机密图片</font></h3><p>图片隐写题，先查看图片属性，没有信息</p>
+<p>再查看图片本身，是一张QR码，识别后也没有任何信息</p>
+<p>用010Editor打开，查看文件头以及数据块，也没有异常，也没有CRC值报错</p>
+<p>那就猜测这题可能考察LSB隐写</p>
+<p>用StegSlove打开，LSB常规操作得到flag如下</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731727184261-5d108341-872d-4fa6-9872-ddb237ffe16d.png"></p>
+<blockquote>
+<p><strong>知识点总结：这道题考察了LSB隐写的相关知识以及Stegsolve的使用</strong></p>
+</blockquote>
+<hr>
+<h3 id="流量！鲨鱼！"><a href="#流量！鲨鱼！" class="headerlink" title="流量！鲨鱼！"></a>流量！鲨鱼！</h3><p>流量分析题，题目提示的很明确，用wireshark来解题</p>
+<p>（但是笔者对这类题目不是很拿手）</p>
+<p>用wireshark打开附件的流量包，观察得到只有TCP协议与HTTP协议流量</p>
+<p>用过滤器过滤出HTTP流量，检索flag关键字，可以看到flag相关流量</p>
+<p>导出所有HTTP对象文件</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731732942294-b153ce85-d969-4aa7-8173-d07b3684005a.png"></p>
+<p>但是几个与flag相关的文件内容都只有NOT FOUND</p>
+<p>再浏览了一遍所有文件，找到一个很可能是flag的文件</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731733054530-9c8bbd6b-94c3-4076-a1b7-5b7e0c989eb3.png"></p>
+<p>打开后是一串base编码，按照文件名提示应该是Base64编码</p>
+<p>复制粘贴至CyberChef，按Base64解码两次得到flag</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731733218606-2b114885-1f6d-4e75-8347-dbc8e37f9f78.png"></p>
+<hr>
+<blockquote>
+<p><strong>知识点总结：这道题考察了流量分析的基本操作、Wireshark的使用，以及Base类型的解码</strong></p>
+</blockquote>
+<h3 id="压缩包们"><a href="#压缩包们" class="headerlink" title="压缩包们"></a>压缩包们</h3><p>压缩包题，根据题目提示，先用010Editor看看</p>
+<p>发现题目给的文件应该是zip文件，但是文件头和文件名后缀不对，我们都改回来</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731734619036-a365a8c7-dc56-4de3-b480-6225c324e48d.png"></p>
+<p>改完后解压，得到一个flag.zip，直接解压提示文件损坏</p>
+<p>修复后解压提示需要密码</p>
+<p>观察了一下压缩包注释，应该是一段Base64编码，我们解码一下</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731834103315-d9267be2-d104-4ead-9b8f-c08e3ac2c29c.png"></p>
+<p>压缩包密码是六位纯数字，直接用Archpr暴力破解得到flag</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731834271644-4a448d94-6b4d-4c0a-bf28-8fdc8269164b.png"></p>
+<blockquote>
+<p><strong>知识点总结：这道题考察了zip文件头、base64解码以及压缩包密码暴力破解</strong></p>
+</blockquote>
+<h3 id="空白格"><a href="#空白格" class="headerlink" title="空白格"></a>空白格</h3><p>打开附件，一个空白的文档</p>
+<p>Ctrl+A全选，发现全是空格</p>
+<p>第一反应是零宽度字符，复制粘贴到零宽度字符在线解密网站<a target="_blank" rel="noopener" href="https://www.mzy0.com/ctftools/zerowidth1/">https://www.mzy0.com/ctftools/zerowidth1/</a></p>
+<p>解密后什么都没有，说明思路是错误的</p>
+<p>通过搜索得知了一种名叫WhiteSpace的编程语言，我们找到了一个运行WhiteSpace语言的在线网站<a target="_blank" rel="noopener" href="https://vii5ard.github.io/whitespace/">https://vii5ard.github.io/whitespace/</a></p>
+<p>复制粘贴后运行得到了flag</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731834995742-6c795a5b-9d13-4d38-98f5-d9c154558143.png"></p>
+<blockquote>
+<p><strong>知识点总结：这道题考察了一种名为WhiteSpace的编程语言</strong></p>
+</blockquote>
+<h3 id="隐秘的眼睛"><a href="#隐秘的眼睛" class="headerlink" title="隐秘的眼睛"></a>隐秘的眼睛</h3><p>附件是一张jpg图片，图片中只有一个眼睛，背景有很多规则分布的小灰点</p>
+<p>根据题目名字以及图片提示，猜测是被SilentEye隐写了</p>
+<p>直接用SilentEye解码得到flag</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731835540852-89a848c2-b872-4d26-b32e-94a60b84fc78.png"></p>
+<blockquote>
+<p><strong>知识点总结：这道题考察了被SilentEye隐写后的图片特征以及SilentEye工具的使用</strong></p>
+</blockquote>
+<h2 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h2><h3 id="新建Word文档"><a href="#新建Word文档" class="headerlink" title="新建Word文档"></a>新建Word文档</h3><p>题目附件给了一个后缀名为docx的文件</p>
+<p>打开文件，是空白的</p>
+<p>用010Editor打开查看，发现是PK头且文件中包含了其他文件</p>
+<p>联想到了压缩包以及docx文件的本质就是压缩包，于是修改后缀名为zip并解压，得到了一个文件夹</p>
+<p>用记事本打开word目录下的document.xml文件，发现了其中一段文字</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731836326051-7e48748c-fc7d-42aa-89d6-b1128027d0f2.png"></p>
+<p>联想到了与佛论禅编码，但是与佛论禅编码一般由“佛曰”或“佛又曰”开头而非“新佛曰”</p>
+<p>尝试用与佛论禅解码，也确实解不出来</p>
+<p>但是又了解到一种和与佛论禅编码类似的编码，叫“新约佛论禅”</p>
+<p><a target="_blank" rel="noopener" href="http://hi.pcmoe.net/buddha.html?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE2OTczNzU3NTAsImZpbGVHVUlEIjoiRHk1ZWtISmhLbzBhcDV2MyIsImlhdCI6MTY5NzM3NTQ1MCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwidXNlcklkIjotODMxMTE0NzQxNX0.mTWIluoUq65XDAhk6XrX9TnWYTlf03r-E2CS43TFFdY">新约佛论禅&#x2F;佛曰加密 - 萌研社 - PcMoe!</a></p>
+<p>用新约佛论禅解码得到了flag</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731836948450-511e7e8d-d29d-4886-afec-03e0b365d44d.png"></p>
+<blockquote>
+<p><strong>知识点总结：这道题考察了docx文档的本质是压缩文件以及新约佛论禅密码的解密</strong></p>
+</blockquote>
+<h3 id="永不消逝的电波"><a href="#永不消逝的电波" class="headerlink" title="永不消逝的电波"></a>永不消逝的电波</h3><p>题目给了一个wav文件，打开播放是一段摩斯密码</p>
+<p>导入到摩斯密码在线听译网站<a target="_blank" rel="noopener" href="https://morsecodemagic.com/zh/%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81%E9%9F%B3%E9%A2%91%E8%A7%A3%E7%A0%81%E5%99%A8/">摩尔斯电码音频解码器 – Morse Code Magic</a>进行解码得到flag内容</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731837333403-11ed0ae8-9acd-4dce-ba99-4b679119238d.png"></p>
+<p>删去flag后包上flag{}提交</p>
+<blockquote>
+<p><strong>知识点总结：这道题考察了摩斯密码的解码</strong></p>
+</blockquote>
+<hr>
+<hr>
+<h3 id="1-序章"><a href="#1-序章" class="headerlink" title="1-序章"></a>1-序章</h3><p>根据题目提示这应该是一道SQL盲注日志分析题</p>
+<p>先了解了一下SQL盲注是什么</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_49150931/article/details/111829828">SQL盲注(原理概述、分类)-CSDN博客</a></p>
+<p>SQL注入这方面可以说是完全不懂，所以就找了几篇师傅的博客和去年比赛的wp来跟着做了</p>
+<p>参考文档：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_64422989/article/details/133849967?spm=1001.2014.3001.5502">NewStarCTF 2023 公开赛道 Week2_[newstarctf 2023 公开赛道]upload again!-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/264144.html">安全事件分析之SQL盲注溯源 - FreeBuf网络安全行业门户</a></p>
+<p>根据参考文档中提到的，攻击者逐一测试从’username’和’password’字段中提取字符的Ascii码，以确定其中的某些字符，如果条件为真，’sleep(1)’函数执行，导致服务器休眠一秒钟，属于时间盲注</p>
+<p>解题思路大概有了，接下来解题需要一个脚本检测时间变化（当然不用脚本一次次请求自己看过去也行）</p>
+<p>不太会写代码，所以只是构思了一下脚本的思路大致如下：</p>
+<p>:::info<br>由于每条请求的内容差别只在时间与检测的Ascii字符上，所以先将所有请求的时间与Ascii码对应存储到两个列表中，再新建一个空列表_result</p>
+<p>然后对时间列表中第i个元素与第i+1个元素做差，如果差值为1则记录Ascii码列表中的第i项并存放在_result列表中</p>
+<p>最后将_result列表中的的每一项转换成对应的Ascii字符并输出，输出结果就是攻击者获取到的数据</p>
+<p>:::</p>
+<p>找到了官方放出的脚本，思路与官方思路一致，但是官方脚本适用于python2.x版本，而我用的是python3.7.9，所以官方脚本编译报错，我们对其稍微进行了修改，代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"> </span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;access.log&#x27;</span>,<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">lines = f.readlines()</span><br><span class="line">datas = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">    t = urllib.parse.unquote(line)</span><br><span class="line">    datas.append(t)</span><br><span class="line"> </span><br><span class="line">flag_ascii = &#123;&#125; </span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> datas:</span><br><span class="line">    matchObj = re.search( <span class="string">r&#x27;user\),(.*?),1\)\)=(.*?),sleep&#x27;</span>, data)</span><br><span class="line">    <span class="keyword">if</span> matchObj:</span><br><span class="line">        key = <span class="built_in">int</span>(matchObj.group(<span class="number">1</span>))</span><br><span class="line">        value = <span class="built_in">int</span>(matchObj.group(<span class="number">2</span>))</span><br><span class="line">        flag_ascii[key] = value</span><br><span class="line">       </span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> flag_ascii.values():</span><br><span class="line">    flag += <span class="built_in">chr</span>(value)</span><br><span class="line">   </span><br><span class="line"><span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
+
+<p>跑一遍脚本就得到了flag</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731852610838-d97dfd6b-a8eb-48cf-ad94-c01c8cb79160.png"></p>
+<blockquote>
+<p><strong>知识点总结：这道题考察了SQL盲注中的时间盲注，攻击者通过对系统时间的变化来判断注入是否成功，通过这些请求我们就可以用攻击者同样的方法来获取攻击者获取到的信息</strong></p>
+</blockquote>
+<h3 id="base"><a href="#base" class="headerlink" title="base!"></a>base!</h3><p>先把整段文字按base64解码了一遍，大部分可读但是与flag毫不相关，并且文字中穿插着部分乱码，说明这应该是被破坏后的一段base64编码</p>
+<p>猜测应该是要将破坏的部分提取出来然后对这部分再进行其它类型的base解码</p>
+<p>接下来又要写脚本，还是借鉴了其他人的wp中的脚本，代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_base64_diff_value</span>(<span class="params">s1, s2</span>):</span><br><span class="line">    base64chars = <span class="string">b&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s2)):</span><br><span class="line">        <span class="keyword">if</span> s1[i] != s2[i]:</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">abs</span>(base64chars.index(s1[i]) - base64chars.index(s2[i]))</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve_stego</span>():</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;base!.txt&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f: <span class="comment">#文件放这里</span></span><br><span class="line">        file_lines = f.readlines()</span><br><span class="line">        bin_str = <span class="string">b&#x27;&#x27;</span>  <span class="comment"># 使用字节串</span></span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> file_lines:</span><br><span class="line">            steg_line = line.replace(<span class="string">b&#x27;\n&#x27;</span>, <span class="string">b&#x27;&#x27;</span>)</span><br><span class="line">            norm_line = base64.b64encode(base64.b64decode(steg_line)).replace(<span class="string">b&#x27;\n&#x27;</span>, <span class="string">b&#x27;&#x27;</span>)</span><br><span class="line">            diff = get_base64_diff_value(steg_line, norm_line)</span><br><span class="line">            <span class="built_in">print</span>(diff)</span><br><span class="line">            pads_num = steg_line.count(<span class="string">b&#x27;=&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> diff:</span><br><span class="line">                bin_str += <span class="built_in">bin</span>(diff)[<span class="number">2</span>:].zfill(pads_num * <span class="number">2</span>).encode()  <span class="comment"># 将二进制字符串转换为字节串</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                bin_str += <span class="string">b&#x27;0&#x27;</span> * pads_num * <span class="number">2</span></span><br><span class="line">            <span class="built_in">print</span>(goflag(bin_str))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">goflag</span>(<span class="params">bin_str</span>):</span><br><span class="line">    res_str = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(bin_str), <span class="number">8</span>):</span><br><span class="line">        res_str += <span class="built_in">bytes</span>([<span class="built_in">int</span>(bin_str[i:i + <span class="number">8</span>], <span class="number">2</span>)])</span><br><span class="line">    <span class="keyword">return</span> res_str.decode()  <span class="comment"># 将字节串转换为字符串</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    solve_stego()</span><br></pre></td></tr></table></figure>
+
+<p>跑一遍脚本，得到了一串字符，应该也是用base编码的</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731854269866-daab5498-2eca-43a2-ae05-7b4aa2913f6b.png"></p>
+<p>复制粘贴到CyberChef中解码，按base58解码后得到flag</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731854327791-d3cc480a-261b-4e5b-859f-01a692c1ec46.png"></p>
+<blockquote>
+<p><strong>知识点总结：这道题考察了base类型编码，但不是整段编码都是一种类型的base编码，而是有其他种类的base编码混淆其中，把base64编码的内容筛去就能得到剩下的base58编码的内容了</strong></p>
+</blockquote>
+<h3 id="WebShell的利用"><a href="#WebShell的利用" class="headerlink" title="WebShell的利用"></a>WebShell的利用</h3><p>一个php文件，打开后观察，猜测应该是php混淆加密的内容</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731855235280-701c3b01-0fb2-4cb0-a9d9-6d2ccd36cadc.png"></p>
+<p>用php混淆破解网站破解这个文件</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731855277135-4c30586e-7c42-42d6-82df-a735665782e2.png"></p>
+<p>进入靶机，传参得到flag</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2024/png/49267415/1731859810768-efaa8e6c-f119-416b-99cb-e1a7a67bfc10.png"></p>
+<blockquote>
+<p><strong>知识点总结：这道题考查了php混淆加密、php语言的基本知识以及hackbar传参</strong></p>
+</blockquote>
+<h3 id="Jvav"><a href="#Jvav" class="headerlink" title="Jvav"></a>Jvav</h3><p>附件是一张照片，用binwalk、010Editor、StegSolve都没有看出端倪</p>
+<p>和题目结合在一起进行联想，猜测是Java盲水印隐写</p>
+<p><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175522/7195549">盲水印提取工具 java_mob649e8169ec5f的技术博客_51CTO博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39972370/article/details/134145890">【CTF-misc】java盲水印BlindWatermark工具使用_ctf 盲水印-CSDN博客</a></p>
+<p>参考这两篇文章，得知Java盲水印隐写要用到BlindWatermark工具</p>
+<p>但是github上下载的BlindWatermark无法直接使用，需要将其编译成jar文件</p>
+<p>但是编译这步没学会……</p>
+<p>后面的步骤应该就是用java运行jar文件从图片中提取出水印，水印就是flag</p>
+<blockquote>
+<p><strong>知识点总结：这道题考察了java盲水印的提取</strong></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">FloatingRaft</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/11/23/2023NewStarCTFWeek1&amp;2-FloatingRaft%E5%A4%8D%E7%8E%B0/">http://example.com/2024/11/23/2023NewStarCTFWeek1&amp;2-FloatingRaft%E5%A4%8D%E7%8E%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">FloatingRaft</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2024/11/23/2023NewStarCTFWeek3-FloatingRaft%E5%A4%8D%E7%8E%B0/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">阳光开朗大男孩附件是两个txt文件，名为flag和secret 打开flag.txt，文本内容全部由emoji表情组成，先猜测是emoji编码  emoji编码又叫base100 编码，base100是一种加密，加密后全是emoji表情  用emoji编码解码器尝试解码，无果Emoji表情符号编码&#x2F;解码 - 一个工具箱 - 好用的在线工具都在这里！ 经过查询，发现还有一种叫emoji aes的编码类型，这种编码类型与emoji编码不同的是，这种编码将原文转换为密文时需要一个私钥key，而解码也需要这个私钥key才能将密文转换为原文 所以另一个secret文件中所包含的应当是这个私钥 打开secret.txt，文本内容全部由社会主义核心价值观组成，猜测是核心价值观编码，用核心价值观编码解码器解码试试核心价值观编码 - Bugku CTF平台  把’s000_h4rd_p4sssw0rdddd’作为私钥，用emoji...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">FloatingRaft</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Week-1"><span class="toc-number">1.</span> <span class="toc-text">Week 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CyberChef%E2%80%99s-Secret"><span class="toc-number">1.1.</span> <span class="toc-text">CyberChef’s Secret</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E5%AF%86%E5%9B%BE%E7%89%87"><span class="toc-number">1.2.</span> <span class="toc-text">机密图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%EF%BC%81%E9%B2%A8%E9%B1%BC%EF%BC%81"><span class="toc-number">1.3.</span> <span class="toc-text">流量！鲨鱼！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85%E4%BB%AC"><span class="toc-number">1.4.</span> <span class="toc-text">压缩包们</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E7%99%BD%E6%A0%BC"><span class="toc-number">1.5.</span> <span class="toc-text">空白格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E7%A7%98%E7%9A%84%E7%9C%BC%E7%9D%9B"><span class="toc-number">1.6.</span> <span class="toc-text">隐秘的眼睛</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Week-2"><span class="toc-number">2.</span> <span class="toc-text">Week 2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BAWord%E6%96%87%E6%A1%A3"><span class="toc-number">2.1.</span> <span class="toc-text">新建Word文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B8%E4%B8%8D%E6%B6%88%E9%80%9D%E7%9A%84%E7%94%B5%E6%B3%A2"><span class="toc-number">2.2.</span> <span class="toc-text">永不消逝的电波</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BA%8F%E7%AB%A0"><span class="toc-number">2.3.</span> <span class="toc-text">1-序章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#base"><span class="toc-number">2.4.</span> <span class="toc-text">base!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WebShell%E7%9A%84%E5%88%A9%E7%94%A8"><span class="toc-number">2.5.</span> <span class="toc-text">WebShell的利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jvav"><span class="toc-number">2.6.</span> <span class="toc-text">Jvav</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/23/2023NewStarCTFWeek1&amp;2-FloatingRaft%E5%A4%8D%E7%8E%B0/" title="无标题">无标题</a><time datetime="2024-11-23T15:34:20.442Z" title="发表于 2024-11-23 23:34:20">2024-11-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/23/2023NewStarCTFWeek3-FloatingRaft%E5%A4%8D%E7%8E%B0/" title="无标题">无标题</a><time datetime="2024-11-23T15:34:20.442Z" title="发表于 2024-11-23 23:34:20">2024-11-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/23/2023NewStarCTFWeek3-FloatingRaft%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="无标题">无标题</a><time datetime="2024-11-23T15:34:20.442Z" title="发表于 2024-11-23 23:34:20">2024-11-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/05/Windows%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%9F%BA%E4%BA%8Egithub+hexo%E7%9A%84%E4%B8%AA%E4%BA%BABlog%E5%88%9D%E6%AD%A5%E6%90%AD%E5%BB%BA/" title="Windows系统下基于github+hexo的个人Blog初步搭建">Windows系统下基于github+hexo的个人Blog初步搭建</a><time datetime="2024-11-05T04:09:11.805Z" title="发表于 2024-11-05 12:09:11">2024-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/02/hello-world/" title="Hello World">Hello World</a><time datetime="2024-11-01T16:51:27.457Z" title="发表于 2024-11-02 00:51:27">2024-11-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By FloatingRaft</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
